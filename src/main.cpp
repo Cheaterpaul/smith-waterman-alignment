@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include "iostuff.cpp"
+#include "reference.cpp"
 
 extern std::string fileName1;
 extern std::string fileName2;
@@ -15,5 +17,8 @@ int main(int argc, char **argv) {
     fileName2 = argv[2];
     threadsAmount = std::stoi(argv[3]);
     outFileName = argv[4];
+    
+    process();
+    
     return 0;
 }
