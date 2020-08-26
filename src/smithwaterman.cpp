@@ -4,6 +4,11 @@
 #include "smithwaterman.h"
 #include <string_view>
 #include "result.h"
+#include "task.h"
+#include <thread>
+#include <algorithm>
+
+extern int threadsAmount;
 
 extern std::string file1;
 extern std::string file2;
@@ -40,14 +45,20 @@ int compare(int x,int y) {
 }
 
 void compare() {
-    for (int i = 0; i < fileSize1-49; ++i) {
-        std::vector<Result> result;
-        for (int j = 0; j < fileSize2-49; ++j) {
-            int value = compare(i, j);
-            if (value > 70) {
-                result.push_back(Result(i,j,value));
-            }
-        }
-        results.push_back(result);
+    
+    size_t frames = fileSize1 / threadsAmount;
+    
+    std::vector<Task> tasks;
+    
+    for (size_t i = 0; i < threadsAmount;++i){
+        tasks.push_back(Task(i * frames, i == threadsAmount-1?fileSize1-1:(i+1)*frames));
     }
+    
+    std::vector<std::thread> threads;
+
+    for (Task task: tasks) {
+        threads.push_back(std::thread(task));
+    }
+    
+    std::for_each(threads.begin(),threads.end(), std::mem_fn(&std::thread::join));
 }
