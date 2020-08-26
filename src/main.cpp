@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include "iostuff.cpp"
-#include "reference.cpp"
+#include "iostuff.h"
+#include "smithwaterman.h"
 
 extern std::string fileName1;
 extern std::string fileName2;
@@ -19,6 +19,8 @@ int main(int argc, char **argv) {
     outFileName = argv[4];
     
     process();
+    
+    compare();
     
     return 0;
 }

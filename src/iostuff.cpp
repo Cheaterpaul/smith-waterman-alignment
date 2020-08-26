@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <boost/algorithm/string.hpp>
+#include "iostuff.h"
 
 extern std::string fileName1;
 extern std::string fileName2;
