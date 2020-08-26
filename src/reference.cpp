@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include "result.h"
 
 std::string fileName1;
 std::string fileName2;

@@ -18,9 +18,11 @@ int main(int argc, char **argv) {
     threadsAmount = std::stoi(argv[3]);
     outFileName = argv[4];
     
-    process();
+    processInputFiles();
     
     compare();
+    
+    processOutputFiles();
     
     return 0;
 }

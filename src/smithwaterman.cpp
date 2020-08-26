@@ -41,5 +41,6 @@ void compare() {
                 result.push_back(Result(i,j,value));
             }
         }
+        results.push_back(result);
     }
 }

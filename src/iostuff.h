@@ -1,3 +1,5 @@
 #pragma once
 
-void process();
+void processInputFiles();
+
+void processOutputFiles();

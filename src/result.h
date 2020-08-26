@@ -1,3 +1,4 @@
+#pragma once
 
 struct Result {
 public:
@@ -6,4 +7,6 @@ public:
     const int value;
     
     Result(int start1, int start2, int value);
+    
+    Result();
 };

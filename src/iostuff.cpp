@@ -1,7 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include <boost/algorithm/string.hpp>
 #include "iostuff.h"
+#include "result.h"
+#include <algorithm>
 
 extern std::string fileName1;
 extern std::string fileName2;
@@ -12,6 +13,8 @@ extern std::string file1;
 extern std::string file2;
 extern int fileSize1;
 extern int fileSize2;
+
+extern std::vector<std::vector<Result>> results;
 
 size_t getFileSize(std::fstream &file) {
     std::streampos size = file.tellg();
@@ -46,17 +49,31 @@ void removeHeader() {
             break;
         }
     }
-    
-    boost::erase_all(file1, "\n");
+    file1.erase(remove(file1.begin(), file1.end(), '\n'), file1.end());
     std::transform(file1.begin(), file1.end(), file1.begin(), toupper);
-    boost::erase_all(file2, "\n");
+    file2.erase(remove(file2.begin(), file2.end(), '\n'), file2.end());
+    //boost::erase_all(file2, "\n");
     std::transform(file1.begin(), file1.end(), file1.begin(), toupper);
     
     fileSize1 = file1.size();
     fileSize2 = file2.size();
 }
 
-void process() {
+void writeResult() {
+    std::ofstream output(outFileName);
+    for(std::vector<Result> vec : results) {
+        for (Result result : vec){
+            output << result.start1 << "," << result.start2 << "," << result.value << "\n";
+        }
+    }
+}
+
+void processInputFiles() {
     readFile();
     removeHeader();
 }
+
+void processOutputFiles() {
+    writeResult();
+}
+
