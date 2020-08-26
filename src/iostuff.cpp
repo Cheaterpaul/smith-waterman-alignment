@@ -61,6 +61,7 @@ void removeHeader() {
 
 void writeResult() {
     std::ofstream output(outFileName);
+    output << fileName1 << "," << fileName2 << "," << "value\n";
     for(std::vector<Result> vec : results) {
         for (Result result : vec){
             output << result.start1 << "," << result.start2 << "," << result.value << "\n";
