@@ -27,8 +27,9 @@ int compare(int x,int y) {
         int a = 0;
         for (size_t j = 1; j <= 50;++j) {
             int value = std::max(collum1[j]-1,a-1);
-            if (value <= collum1[j-1]+2) {
-                int value2 = collum1[j-1] + (file1[x+i] == file2[y+j] ? 2 : -1);
+            int b;
+            if (!(value > (b = collum1[j-1])+2)) {
+                int value2 = b + (file1[x+i] == file2[y+j] ? 2 : -1);
                 if (value2 > value) {
                     value = value2;
                 }
