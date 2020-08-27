@@ -24,8 +24,9 @@ int compare(int x,int y) {
     std::vector<int> collum1(51, 0);
     std::vector<int> collum2(51,0);
     for (size_t i = 1; i <= 50;++i) {
+        int a = 0;
         for (size_t j = 1; j <= 50;++j) {
-            int value = std::max(collum1[j]-1,collum2[j-1]-1);
+            int value = std::max(collum1[j]-1,a-1);
             if (value <= collum1[j-1]+2) {
                 int value2 = collum1[j-1] + (file1[x+i] == file2[y+j] ? 2 : -1);
                 if (value2 > value) {
@@ -33,10 +34,12 @@ int compare(int x,int y) {
                 }
             }
             if (value > 0) {
-                collum2[j] = value;
+                a = collum2[j] = value;
                 if (maxValue < value) {
                     maxValue = value;
                 }
+            } else {
+                a = 0;
             }
             
         }
