@@ -1,3 +1,4 @@
 build/*
 run/*
 .kdev4
+.idea
