@@ -9,4 +9,5 @@ the binary is `build/genom`
 
 run `./build/genom <input-file-1> <input-file-2> <threads> <output-file>`
 
-note: the application has no feedback
+#### plot the result
+run `./plotSMSresults.py <output-file>`
